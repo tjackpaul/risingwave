@@ -8,16 +8,14 @@ pipelines:
     branchName: main
     machine:
       baseImage: docker.apple.com/base-images/ubi9/ubi-builder:latest
+    checkout:
+      fetchTags: true
     build:
       template: freestyle:v4:publish
       buildParameters:
         - parameter: tag
           description: tag to be built
       steps:
-        - ls -la
-        - cd risingvave
-        - ls -la
-        - git fetch --all --tags
         - git checkout ${BUILD_PARAM_tag}
     package:
       dockerfile:
