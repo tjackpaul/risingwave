@@ -5,7 +5,7 @@ machine:
 
 pipelines:
   - name: build-risingwave-image
-    branchName: add-rio
+    branchName: main
     machine:
       baseImage: docker.apple.com/base-images/ubi9/ubi-builder:latest
     build:
