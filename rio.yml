@@ -8,6 +8,8 @@ pipelines:
     branchName: main
     machine:
       baseImage: docker.apple.com/base-images/ubi9/ubi-builder:latest
+      env:
+        CARGO_PROFILE: "${BUILD_PARAM_cargo_profile}"
     checkout:
       fetchTags: true
     build:
@@ -15,6 +17,8 @@ pipelines:
       buildParameters:
         - parameter: tag
           description: tag to be built
+        - parameter: cargo_profile
+          description: cargo profile to use
       steps:
         - git checkout ${BUILD_PARAM_tag}
     package:
